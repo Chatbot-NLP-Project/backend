@@ -64,3 +64,41 @@ def login(mysql):
 def logout():
     session.clear()
     return "Done"
+
+def viewprofile(mysql):
+    user_id = request.get_json()['user_id']
+    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor) #Object that is going to go through our database
+
+    try:
+        cur.execute('SELECT * FROM user WHERE user_id = % s', (user_id ,))
+        user = cur.fetchone()
+        cur.close()
+        if user:
+            return jsonify(user)
+        else:
+            return "Error no user found"
+    except:
+        return "Error cannot connect to database"
+
+def updateprofile(mysql):
+    user_id = request.get_json()['user_id']
+    first_name = request.get_json()['first_name']
+    last_name = request.get_json()['last_name']
+    phone_number = request.get_json()['phone_number'] 
+    email = request.get_json()['email']
+    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor) #Object that is going to go through our database
+
+    try:
+        print(id, first_name, last_name, phone_number, email)
+        print(1)
+        # update query is not working somehow
+        cur.execute('UPDATE user SET email = % s, first_name = % s, last_name = % s, phone_number = % s WHERE user_id = % s', (email ,first_name ,last_name ,phone_number ,user_id ,))
+        print(2)
+        user = cur.fetchone()
+        cur.close()
+        if user:
+            return jsonify(user)
+        else:
+            return "Error no user found"
+    except:
+        return "Error cannot connect to database"
