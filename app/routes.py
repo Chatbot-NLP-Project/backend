@@ -35,6 +35,13 @@ def login():
 @app.route('/logout')
 def logout():
     return User.logout()
+
+@app.route('/profile', methods=['GET','POST'])
+def viewprofile():
+    if request.method == 'GET':
+        return User.viewprofile(mysql)
+    if request.method == 'POST':
+        return User.updateprofile(mysql)
      
 #######################################################
 ################''' Telecom Routes '''#################
