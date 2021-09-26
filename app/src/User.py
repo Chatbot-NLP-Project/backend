@@ -66,7 +66,8 @@ def logout():
     return "Done"
 
 def viewprofile(mysql):
-    user_id = request.get_json()['user_id']
+    # user_id = request.get_json()['user_id']   // for postmon use this
+    user_id = request.args.get('user_id', '')  #// for axios use this
     cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor) #Object that is going to go through our database
 
     try:
@@ -81,24 +82,35 @@ def viewprofile(mysql):
         return "Error cannot connect to database"
 
 def updateprofile(mysql):
+    print('here ok')
+    # for postman
     user_id = request.get_json()['user_id']
     first_name = request.get_json()['first_name']
     last_name = request.get_json()['last_name']
     phone_number = request.get_json()['phone_number'] 
     email = request.get_json()['email']
+
+    # for axios
+    # user_id = request.args.get('user_id', '')
+    # first_name = request.args.get('first_name', '')
+    # last_name = request.args.get('last_name', '')
+    # phone_number = request.args.get('phone_number', '')
+    # email = request.args.get('email', '')
     cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor) #Object that is going to go through our database
 
     try:
-        print(id, first_name, last_name, phone_number, email)
-        print(1)
+        print( first_name, last_name, phone_number, email)
         # update query is not working somehow
         cur.execute('UPDATE user SET email = % s, first_name = % s, last_name = % s, phone_number = % s WHERE user_id = % s', (email ,first_name ,last_name ,phone_number ,user_id ,))
-        print(2)
-        user = cur.fetchone()
-        cur.close()
-        if user:
-            return jsonify(user)
-        else:
-            return "Error no user found"
+        mysql.connection.commit()
+        print('Added successfully')
+        return 'Added successfully'
+        # user = cur.fetchone()
+        # cur.close()
+        # if user:
+        #     return jsonify(user)
+        # else:
+        #     return "Error no user found"
     except:
+        print('Can\'t connect to database')
         return "Error cannot connect to database"

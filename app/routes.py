@@ -6,6 +6,9 @@ from app import app
 from app import mysql
 #A Flask extension for handling Cross Origin Resource Sharing (CORS), making cross-origin AJAX possible.
 #Axios doesnt work without this
+from app.src.TransportationBot import chat3
+from app.src.TransportationBot import travel
+
 CORS(app)
 
 #######################################################
@@ -44,6 +47,26 @@ def viewprofile():
         return User.updateprofile(mysql)
      
 #######################################################
-################''' Telecom Routes '''#################
+################''' Tranport Routes '''#################
 #######################################################
 
+@app.route("/chat")
+def chat():
+    re = chat3("Hi")
+    return {"members":["Member",re]}
+
+@app.route("/reply",methods=["GET","POST"])
+def reply():
+    if request.method == 'POST':
+        # if request.get_json()['msg'] == "Hi":
+        re = chat3(request.get_json()['msg'])
+        print(re)
+        return {"members": re}
+
+@app.route("/travel",methods=["POST"])
+def travel():
+    print('here')
+    if request.method == 'POST':
+        re = travel(request.get_json()['to', 'from', 'method'])
+        print(re)
+        return {"members": re}
