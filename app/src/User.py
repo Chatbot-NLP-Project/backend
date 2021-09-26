@@ -75,14 +75,17 @@ def viewprofile(mysql):
         user = cur.fetchone()
         cur.close()
         if user:
+            print(user)
             return jsonify(user)
         else:
+            print('Error here')
             return "Error no user found"
     except:
+        print('Error h')
         return "Error cannot connect to database"
 
 def updateprofile(mysql):
-    print('here ok')
+
     # for postman
     user_id = request.get_json()['user_id']
     first_name = request.get_json()['first_name']
@@ -114,3 +117,40 @@ def updateprofile(mysql):
     except:
         print('Can\'t connect to database')
         return "Error cannot connect to database"
+
+#######################################################
+###################''' Update Password '''####################
+#######################################################
+    
+def updatepassword(mysql):
+
+    id = request.get_json()['user_id']
+    current = request.get_json()['currentPassword'].encode('utf-8')
+    new = request.get_json()['newPassword'].encode('utf-8')
+    confirm = request.get_json()['confirmPassword'].encode('utf-8')
+
+    hashed_current = bcrypt.hashpw(current, bcrypt.gensalt())
+    hashed_new = bcrypt.hashpw(new, bcrypt.gensalt())
+    hashed_confirm = bcrypt.hashpw(confirm, bcrypt.gensalt())
+
+    cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    try:
+        cur.execute("SELECT * FROM user WHERE user_id=%s",(id,))
+        user = cur.fetchone()
+        if (user):
+            print(user["password"].encode('utf-8'))
+            print(hashed_current)
+            if (user["password"].encode('utf-8') == hashed_current):
+                cur.execute('UPDATE user SET password = % s WHERE user_id = % s', (hashed_new ,id ,))
+                mysql.connection.commit()
+                cur.close()
+                print('password changed')
+                return('Password Updataed Successfully!')
+            else:
+                cur.close()
+                print('incorrect current password')
+                return('Current Password did not match')
+    except:
+        print('database connection error')
+        return('Can\'t connect to database')
+    

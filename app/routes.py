@@ -45,6 +45,10 @@ def viewprofile():
         return User.viewprofile(mysql)
     if request.method == 'POST':
         return User.updateprofile(mysql)
+
+@app.route('/password', methods=['POST'])
+def password():
+    return User.updatepassword(mysql)
      
 #######################################################
 ################''' Tranport Routes '''#################
