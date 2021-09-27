@@ -124,6 +124,10 @@ def updateprofile(mysql):
     
 def updatepassword(mysql):
 
+    print('####################################################')
+    print('####################################################')
+    print('####################################################')
+    print('####################################################')
     id = request.get_json()['user_id']
     current = request.get_json()['currentPassword'].encode('utf-8')
     new = request.get_json()['newPassword'].encode('utf-8')
