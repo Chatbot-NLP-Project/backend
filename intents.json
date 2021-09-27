@@ -1,0 +1,38 @@
+{"intents": [
+    {"tag": "travel",
+     "patterns": ["How to go to from", "How can I get to from", "what are the ways to go to from", "could you tell me the best way to get to", "what is the quickest way to go to"],
+     "responses": ["travel"],
+     "context_set": ""
+    },
+    {"tag": "schedule",
+     "patterns": ["what are the trains leaving from to", "show me the trains from to today", "are there any trains from to tomorrow", "time table of trains", "train schedule"],
+     "responses": ["schedule"],
+     "context_set": ""
+    },
+    {"tag": "complaint",
+     "patterns": ["the bus is moving too slow", "the train is moving too slow", "the train is delayed", "there are no buses on the road", "driver is careless", "driver is driving dangerously"],
+     "responses": ["complaint"],
+     "context_set": ""
+    },
+    {"tag": "greeting",
+     "patterns": ["Hi", "How are you", "Is anyone there?", "Hello", "Good day", "Whats up"],
+     "responses": ["Hello!", "Good to see you again!", "Hi there, how can I help?"],
+     "context_set": ""
+    },
+    {"tag": "goodbye",
+     "patterns": ["cya", "See you later", "Goodbye", "I am Leaving", "Have a Good day"],
+     "responses": ["Sad to see you go :(", "Talk to you later", "Goodbye!"],
+     "context_set": ""
+    },
+    {"tag": "age",
+     "patterns": ["how old", "how old is xyron", "what is your age", "how old are you", "age?"],
+     "responses": ["I am 18 years old!", "18 years young!"],
+     "context_set": ""
+    },
+    {"tag": "name",
+     "patterns": ["what is your name", "what should I call you", "whats your name?"],
+     "responses": ["You can call me Xyron.", "I'm Xyron!"],
+     "context_set": ""
+    }
+]
+}
