@@ -26,7 +26,6 @@ pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pycosat==0.6.3
 pycurl==7.43.0.6
-pydocstyle @ file:///tmp/build/80754af9/pydocstyle_1616182067796/work
 PyJWT==2.1.0
 pyodbc===4.0.0-unsupported
 pyreadline==2.1
