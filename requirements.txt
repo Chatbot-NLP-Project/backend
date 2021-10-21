@@ -1,6 +1,6 @@
 absl-py==0.13.0
 anaconda-client
-anaconda-navigator==2.0.3
+anaconda-navigator
 appdirs==1.4.4
 argh==0.26.2
 astunparse==1.6.3
