@@ -1,12 +1,12 @@
 import nltk
-from tensorflow.python.ops.gen_array_ops import shape
+# from tensorflow.python.ops.gen_array_ops import shape
 
 from nltk.stem.lancaster import LancasterStemmer   # used to stem our words
 stemmer = LancasterStemmer()
 
 import numpy
 import tflearn
-import tensorflow
+#import tensorflow
 import random
 import json
 import pickle
@@ -68,7 +68,7 @@ except:
         pickle.dump((words, labels, training, output), f)
 
 # resetting if there are any previous underlying data graphs
-tensorflow.compat.v1.reset_default_graph()
+#tensorflow.compat.v1.reset_default_graph()
 
 # define input shape we are expecting to train the model
 net = tflearn.input_data(shape=[None, len(training[0])])
