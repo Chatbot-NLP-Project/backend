@@ -27,7 +27,6 @@ pyasn1-modules==0.2.8
 pycosat==0.6.3
 pycurl==7.43.0.6
 PyJWT==2.1.0
-pyodbc===4.0.0-unsupported
 pyreadline==2.1
 pytest==6.2.3
 python-dotenv==0.19.0
