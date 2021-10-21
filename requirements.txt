@@ -16,7 +16,7 @@ certifi==2020.12.5
 clyent==1.2.1
 comtypes==1.1.9
 conda==4.3.16
-conda-build==3.21.4
+conda-build==2.1.5
 conda-verify==3.4.2
 contextlib2==0.6.0.post1
 cycler==0.10.0
