@@ -20,6 +20,10 @@ CORS(app)
 #######################################################
 from app.src import User, Controllers
 
+@app.route('/') 
+def index():
+    return "<h1> Hello Heroku </h1>"
+
 @app.route('/register', methods=["GET", "POST"]) 
 def register():
     if request.method == 'GET':
