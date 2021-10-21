@@ -1,10 +1,6 @@
-from app import routes
-from app import db
-
 import nltk
-from nltk.util import pr
 from tensorflow.python.ops.gen_array_ops import shape
-#nltk.download('punkt')  ## added due to "Resource punkt not found" error
+
 from nltk.stem.lancaster import LancasterStemmer   # used to stem our words
 stemmer = LancasterStemmer()
 
@@ -64,6 +60,7 @@ except:
             training.append(bag)
             output.append(output_row)
 
+    # tflearn works with numpy arrays
     training = numpy.array(training)
     output = numpy.array(output)
 
@@ -108,16 +105,7 @@ def bag_of_words(s, words):
 
     return numpy.array(bag)
 
-def travel(To, From, Method):
-  print(To, From, Method)
-  return ('We came here')
-
 def chat3(inp):
-    # print("Start talking with bot")
-    # while True:
-    #     inp = input("You: ")
-    #     if inp.lower() == "quit":
-    #         break
 
     results = model.predict([bag_of_words(inp, words)])[0]
     results_index = numpy.argmax(results)
@@ -134,6 +122,3 @@ def chat3(inp):
         return res
     else:
         return ("I didn't get that, try again.")
-
-
-# chat()
