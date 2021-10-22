@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/698cbea8-4218-462e-829b-3733afde7ea3/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/XyronBot",
+    "appService.deploySubpath": "."
+}
