@@ -55,6 +55,7 @@ protobuf==3.14.0
 pyasn1
 pyasn1-modules==0.2.8
 pycparser
+pycurl==7.43.0.6
 PyJWT
 pyOpenSSL
 pyreadline==2.1
@@ -70,6 +71,7 @@ scikit-learn
 scipy
 six
 tensorboard
+tensorflow-cpu
 termcolor==1.1.0
 tflearn==0.5.0
 threadpoolctl
