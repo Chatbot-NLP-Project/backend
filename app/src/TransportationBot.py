@@ -1,4 +1,5 @@
 import nltk
+nltk.download('punkt')
 # from tensorflow.python.ops.gen_array_ops import shape
 
 from nltk.stem.lancaster import LancasterStemmer   # used to stem our words
