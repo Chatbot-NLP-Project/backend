@@ -10,11 +10,11 @@ def travel(mysql):
     mode = request.get_json()['mode'].lower()
     cur = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     
-    query1 = 'select `methodID`,`type`,`routeNo`,`routeName`,`departure station`.name as `from`,`destination station`.name as `to`,`fee` from route join transportationmethod using (routeID) join `departure station` using (routeID) join `destination station` using (routeID) where (`departure station`.name = % s and `destination station`.name = % s and `type`= % s )'
+    query1 = 'select `methodID`,`type`,`routeNo`,`routeName`,`Departure Station`.name as `from`,`Destination Station`.name as `to`,`fee` from Route join TransportationMethod using (routeID) join `Departure Station` using (routeID) join `Destination Station` using (routeID) where (`Departure Station`.name = % s and `Destination Station`.name = % s and `type`= % s )'
     cur.execute(query1, (fromStation, toStation,mode ,))
     methods1 = cur.fetchall()
 
-    query2 = 'select `methodID`,`type`,`routeNo`,`routeName`,`departure station`.name as `from`,`stop station`.name as `to`,`fee` from route join transportationmethod using (routeID) join `departure station` using (routeID) join `stop station` using (routeID) where (`departure station`.name = % s and `stop station`.name = % s and `type`= % s )'
+    query2 = 'select `methodID`,`type`,`routeNo`,`routeName`,`Departure Station`.name as `from`,`Stop Station`.name as `to`,`fee` from Route join TransportationMethod using (routeID) join `Departure Station` using (routeID) join `Stop Station` using (routeID) where (`Departure Station`.name = % s and `Stop Station`.name = % s and `type`= % s )'
     cur.execute(query2, (fromStation, toStation,mode ,))
     methods2 = cur.fetchall()
 
