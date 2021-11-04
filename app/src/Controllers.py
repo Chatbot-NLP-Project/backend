@@ -4,6 +4,7 @@ from flask_mysqldb import MySQL, MySQLdb
 from flask_mail import Mail, Message
 from app import mail
 
+# get travel method options
 def travel(mysql):
     toStation = request.get_json()['to'].lower()
     fromStation = request.get_json()['from'].lower()
@@ -25,6 +26,8 @@ def travel(mysql):
     else:
         return jsonify(methods=methods, er=0)
 
+
+# send email 
 def sendEmail(mysql):
     email = request.get_json()["email"]
     subject = request.get_json()["subject"]

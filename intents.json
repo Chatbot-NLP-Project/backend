@@ -25,7 +25,7 @@
      "context_set": ""
     },
     {"tag": "reserve",
-        "patterns": ["book me a seat", "make a reservation", "can i book a seat"],
+        "patterns": ["book me a seat", "make a reservation", "can i book a seat","how to book a bus seat", "can i make a train reservation", "buy tickets online"],
         "responses": ["reserve"],
         "context_set": ""
        },
@@ -33,11 +33,6 @@
      "patterns": ["what is your name", "what should I call you", "whats your name?"],
      "responses": ["You can call me Xyron.", "I'm Xyron!"],
      "context_set": ""
-    },
-    {"tag": "who",
-        "patterns": ["Who are you?", "How you work?", "What are you built from?", "From what you have been created"],
-        "responses": ["I was created using Machine learning", "A branch of Artificial intelligence was used to create me", "I am just an artificial intelligence agent."],
-        "context_set": ""
     }
 ]
 }
