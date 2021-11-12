@@ -92,7 +92,7 @@ except:
 # model.fit(training, output, n_epoch=1000, batch_size=8, show_metric=True)
 # model.save("model.tflearn")
 
-
+# covert input message into a binary encoded string
 def bag_of_words(s, words):
     bag = [0 for _ in range(len(words))]
 
@@ -106,12 +106,12 @@ def bag_of_words(s, words):
 
     return numpy.array(bag)
 
+# find the class of given input message
 def chat3(inp):
 
     results = model.predict([bag_of_words(inp, words)])[0]
     results_index = numpy.argmax(results)
     tag = labels[results_index]
-
 
     if results[results_index] > 0.75:
         for tg in data["intents"]:
